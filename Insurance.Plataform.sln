@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A988E964-5803-4C02-A858-4C2ADFBBFB2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.Plataform.Api", "src\Insurance.Plataform.Api\Insurance.Plataform.Api.csproj", "{9A53F11C-81C7-AA56-2B58-168F43554751}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5750201A-0347-498D-910F-BFDD6B0FAABD} = {5750201A-0347-498D-910F-BFDD6B0FAABD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.Plataform.Domain", "src\Insurance.Plataform.Domain\Insurance.Plataform.Domain.csproj", "{7722C93E-C9F8-42C7-9C67-101D10BAA16B}"
 EndProject
