@@ -1,7 +1,10 @@
-﻿namespace Insurance.Plataform.Domain.Entities
+﻿using Insurance.Plataform.Domain.Enums;
+
+namespace Insurance.Plataform.Domain.Entities
 {
-    public class ProposalEntity
+    public class ProposalEntity : BaseEntity
     {
-        public Guid Id { get; set; }
+        public required EStatus Status { get; set; }
+        public required string Name { get; set; }
     }
 }
