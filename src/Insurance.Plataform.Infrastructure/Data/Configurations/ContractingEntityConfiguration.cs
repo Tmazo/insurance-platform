@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Insurance.Plataform.Infrastructure.Data.Configurations
 {
-    public class ProposalEntityConfiguration : IEntityTypeConfiguration<ProposalEntity>
+    public class ContractingEntityConfiguration : IEntityTypeConfiguration<ContractingEntity>
     {
-        public void Configure(EntityTypeBuilder<ProposalEntity> builder)
+        public void Configure(EntityTypeBuilder<ContractingEntity> builder)
         {
-            builder.ToTable("Proposals");
+            builder.ToTable("Contractings");
         }
-    }   
+    }
 }

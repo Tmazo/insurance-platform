@@ -7,10 +7,12 @@ namespace Insurance.Plataform.Infrastructure.Data
     public class InsurancePlataformContext : DbContext
     {
         public DbSet<ProposalEntity> Proposals { get; set; }
+        public DbSet<ContractingEntity> Contractings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ProposalEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ContractingEntityConfiguration()); 
         }
     }
 }
