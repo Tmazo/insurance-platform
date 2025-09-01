@@ -1,20 +1,20 @@
 ﻿using Insurance.Plataform.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Hosting;
 
 namespace Insurance.Plataform.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {
 
-        public static IServiceCollection AddInfra(this IServiceCollection services)
+        public static IHostApplicationBuilder AddInfra(this IHostApplicationBuilder builder)
         {
-            services.AddDbContext<InsurancePlataformContext>(options =>
-                options.UseSqlServer("Server=localhost;Database=master;Trusted_Connection=True;"));
+            builder.Services.AddDbContext<InsurancePlataformContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            return services;
+            return builder;
         }
 
     }
