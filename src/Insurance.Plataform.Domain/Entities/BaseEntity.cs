@@ -1,7 +1,6 @@
-﻿namespace Insurance.Plataform.Domain.Entities
+﻿namespace Insurance.Plataform.Domain.Entities;
+
+public class BaseEntity
 {
-    public class BaseEntity
-    {
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }

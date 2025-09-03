@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Insurance.Plataform.Infrastructure.Data.Configurations
+namespace Insurance.Plataform.Infrastructure.Data.Configurations;
+
+public class ContractingEntityConfiguration : IEntityTypeConfiguration<ContractingEntity>
 {
-    public class ContractingEntityConfiguration : IEntityTypeConfiguration<ContractingEntity>
+    public void Configure(EntityTypeBuilder<ContractingEntity> builder)
     {
-        public void Configure(EntityTypeBuilder<ContractingEntity> builder)
-        {
-            builder.ToTable("Contractings");
-        }
+        builder.ToTable("Contractings");
     }
 }
