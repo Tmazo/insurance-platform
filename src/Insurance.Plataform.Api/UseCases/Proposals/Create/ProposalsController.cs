@@ -1,16 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Insurance.Plataform.Application.Dtos;
+using Insurance.Plataform.Application.UseCases.Proposals.Create;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Insurance.Plataform.Api.UseCases.Proposals.Create
+namespace Insurance.Plataform.Api.UseCases.Proposals.Create;
+
+[ApiController]
+[Route("[controller]")]
+public class ProposalsController(IProposalsService proposalsService) : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ProposalsController : ControllerBase
+    [HttpPost]
+    public async Task<IActionResult> CreateAsync(
+        [FromBody] CreateProposalRequest createProposalRequest,
+        CancellationToken cancellationToken)
     {
-
-        [HttpPost]
-        public IActionResult Create()
+        try
         {
-            return NoContent();
+            var result = await proposalsService.CreateAsync(
+                createProposalRequest,
+                cancellationToken);
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
         }
     }
 }

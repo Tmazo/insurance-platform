@@ -18,7 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Insurance.Plataform.Application\Insurance.Plataform.Application.csproj" />
     <ProjectReference Include="..\Insurance.Plataform.Infrastructure\Insurance.Plataform.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\Proposals\Patch\" />
   </ItemGroup>
 
 </Project>
