@@ -16,7 +16,7 @@ public class ProposalsController(IProposalsService proposalsService) : Controlle
     {
         try
         {
-            var result = await proposalsService.UpdateStatusAsync(
+            await proposalsService.UpdateStatusAsync(
                 id,
                 updateProposalStatusRequest,
                 cancellationToken);
