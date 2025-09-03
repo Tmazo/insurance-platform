@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Insurance.Plataform.Domain\Insurance.Plataform.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Proposals\Patch\" />
+  </ItemGroup>
+
 </Project>

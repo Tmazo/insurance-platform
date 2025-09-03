@@ -1,12 +1,15 @@
 ﻿using Insurance.Plataform.Application.Dtos;
 using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Repositories;
+using Insurance.Plataform.Domain.ValueObjects;
 
 namespace Insurance.Plataform.Application.UseCases.Proposals.Create;
 
 public class ProposalsService(IProposalRepository proposalRepository) : IProposalsService
 {
-    public async Task<Guid> CreateAsync(CreateProposalRequest createProposalRequest, CancellationToken cancellationToken) =>
+    public async Task<Guid> CreateAsync(
+        CreateProposalRequest createProposalRequest,
+        CancellationToken cancellationToken) =>
         await proposalRepository.AddAsync(
             proposalEntity: new ProposalEntity()
             {
@@ -14,4 +17,23 @@ public class ProposalsService(IProposalRepository proposalRepository) : IProposa
                 Status = createProposalRequest.Status
             },
             cancellationToken: cancellationToken);
+
+    public async Task UpdateStatusAsync(
+        Guid id,
+        UpdateProposalStatusRequest updateProposalStatusRequest, 
+        CancellationToken cancellationToken) =>
+        await proposalRepository.UpdateStatusAsync(
+            new UpdateProposalStatus(id, updateProposalStatusRequest.Status),
+            cancellationToken);
+
+    public async Task<IEnumerable<ProposalResponse>> FindAllAsync(CancellationToken cancellationToken)
+    {
+        var proposals = await proposalRepository.FindAllAsync(cancellationToken);
+
+        return proposals.Select(p => new ProposalResponse
+        {
+            Name = p.Name,
+            Status = p.Status
+        });
+    }
 }
