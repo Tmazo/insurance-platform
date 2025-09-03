@@ -15,11 +15,9 @@ public class ProposalsController(IProposalsService proposalsService) : Controlle
     {
         try
         {
-            var result = await proposalsService.CreateAsync(
+            return Ok(await proposalsService.CreateAsync(
                 createProposalRequest,
-                cancellationToken);
-
-            return Ok(result);
+                cancellationToken));
         }
         catch (Exception ex)
         {
