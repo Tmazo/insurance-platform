@@ -1,4 +1,5 @@
-﻿using Insurance.Plataform.Application.UseCases.Proposals;
+﻿using Insurance.Plataform.Application.Exceptions;
+using Insurance.Plataform.Application.UseCases.Proposals;
 using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Enums;
 using Insurance.Plataform.Domain.Repositories;
@@ -17,7 +18,7 @@ namespace Insurance.Plataform.Application.UseCases.Contracting
                 .FindByStatusAsync(proposalStatus, cancellationToken);
 
             if (!proposals.Any())
-                throw new Exception();//TODO: ajustar erro. 
+                throw new ProposalNotFoundException();
 
             var useProposal = proposals.FirstOrDefault();
 

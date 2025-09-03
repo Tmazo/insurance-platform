@@ -1,4 +1,5 @@
 ﻿using Insurance.Plataform.Application.Dtos;
+using Insurance.Plataform.Application.Exceptions;
 using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Enums;
 using Insurance.Plataform.Domain.Repositories;
@@ -24,7 +25,7 @@ public class ProposalsService(IProposalRepository proposalRepository) : IProposa
         CancellationToken cancellationToken)
     {
         var proposal = await proposalRepository.FindByIdAsync(id, cancellationToken)
-            ?? throw new Exception($"Proposal {id} not found."); //TODO: ajustar erro
+            ?? throw new ProposalNotFoundByIdException(id);
 
         proposal.Status = updateProposalStatusRequest.Status;
 
