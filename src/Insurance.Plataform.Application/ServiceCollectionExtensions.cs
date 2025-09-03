@@ -1,4 +1,5 @@
-﻿using Insurance.Plataform.Application.UseCases.Proposals.Create;
+﻿using Insurance.Plataform.Application.UseCases.Contracting;
+using Insurance.Plataform.Application.UseCases.Proposals;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,6 +15,8 @@ namespace Insurance.Plataform.Application
         }
 
         private static IServiceCollection AddServices(this IServiceCollection services) =>
-            services.AddScoped<IProposalsService, ProposalsService>();
+            services
+                .AddScoped<IProposalsService, ProposalsService>()
+                .AddScoped<IContractingService, ContractingService>();
     }
 }

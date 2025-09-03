@@ -1,4 +1,5 @@
 ﻿using Insurance.Plataform.Domain.Entities;
+using Insurance.Plataform.Domain.Enums;
 using Insurance.Plataform.Domain.Repositories;
 using Insurance.Plataform.Domain.ValueObjects;
 using Insurance.Plataform.Infrastructure.Data;
@@ -34,4 +35,10 @@ public class ProposalRepository(InsurancePlataformContext dbContext) : IProposal
     public async Task<IEnumerable<ProposalEntity>> FindAllAsync(
         CancellationToken cancellationToken) =>
         await _proposalsContext.ToListAsync(cancellationToken);
+
+    public async Task<IEnumerable<ProposalEntity>> FindByStatusAsync(
+        EProposalStatus status,
+        CancellationToken cancellationToken) =>
+        await _proposalsContext.Where(w => w.Status == status)
+        .ToListAsync(cancellationToken);
 }

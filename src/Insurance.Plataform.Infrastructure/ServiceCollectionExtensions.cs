@@ -15,9 +15,14 @@ public static class ServiceCollectionExtensions
         builder.Services.AddDbContext<InsurancePlataformContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        builder.Services.AddScoped<IProposalRepository, ProposalRepository>();
+        builder.Services.AddRepositories();
 
         return builder;
     }
+
+    private static IServiceCollection AddRepositories(this IServiceCollection services) =>
+        services
+            .AddScoped<IProposalRepository, ProposalRepository>()
+            .AddScoped<IContractingRepository, ContractingRepository>();
 
 }

@@ -1,6 +1,7 @@
 ﻿using Insurance.Plataform.Application.Dtos;
+using Insurance.Plataform.Domain.Enums;
 
-namespace Insurance.Plataform.Application.UseCases.Proposals.Create;
+namespace Insurance.Plataform.Application.UseCases.Proposals;
 
 public interface IProposalsService
 {
@@ -11,6 +12,10 @@ public interface IProposalsService
         Guid id,
         UpdateProposalStatusRequest updateProposalStatusRequest,
         CancellationToken cancellationToken);
-    Task<IEnumerable<ProposalResponse>> FindAllAsync(
+    Task<IEnumerable<Proposal>> FindAllAsync(
     CancellationToken cancellationToken);
+
+    Task<IEnumerable<Proposal>> FindByStatusAsync(
+        EProposalStatus status,
+        CancellationToken cancellationToken);
 }
