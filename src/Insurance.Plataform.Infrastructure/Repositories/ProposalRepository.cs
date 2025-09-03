@@ -1,7 +1,6 @@
 ﻿using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Enums;
 using Insurance.Plataform.Domain.Repositories;
-using Insurance.Plataform.Domain.ValueObjects;
 using Insurance.Plataform.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,18 +18,16 @@ public class ProposalRepository(InsurancePlataformContext dbContext) : IProposal
         return proposalEntity.Id;
     }
 
-    public async Task UpdateStatusAsync(
-        UpdateProposalStatus updateProposalStatus,
-        CancellationToken cancellationToken)
-    {
-        var proposal = await _proposalsContext
-            .FirstOrDefaultAsync(f => f.Id == updateProposalStatus.Id, cancellationToken)
-            ?? throw new Exception(); //TODO: ajustar erro
+    public async Task SaveChangesAsync(
+        CancellationToken cancellationToken) =>
+        await dbContext.SaveChangesAsync(cancellationToken);
 
-        proposal.Status = updateProposalStatus.Status;
-
-        await dbContext.SaveChangesAsync();
-    }
+    public async Task<ProposalEntity?> FindByIdAsync(
+        Guid id,
+        CancellationToken cancellationToken) =>
+        await _proposalsContext
+        .AsTracking()
+        .FirstOrDefaultAsync(w => w.Id == id);
 
     public async Task<IEnumerable<ProposalEntity>> FindAllAsync(
         CancellationToken cancellationToken) =>

@@ -2,7 +2,6 @@
 using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Enums;
 using Insurance.Plataform.Domain.Repositories;
-using Insurance.Plataform.Domain.ValueObjects;
 
 namespace Insurance.Plataform.Application.UseCases.Proposals;
 
@@ -22,10 +21,16 @@ public class ProposalsService(IProposalRepository proposalRepository) : IProposa
     public async Task UpdateStatusAsync(
         Guid id,
         UpdateProposalStatusRequest updateProposalStatusRequest,
-        CancellationToken cancellationToken) =>
-        await proposalRepository.UpdateStatusAsync(
-            new UpdateProposalStatus(id, updateProposalStatusRequest.Status),
-            cancellationToken);
+        CancellationToken cancellationToken)
+    {
+        var proposal = await proposalRepository.FindByIdAsync(id, cancellationToken)
+            ?? throw new Exception($"Proposal {id} not found."); //TODO: ajustar erro
+
+        proposal.Status = updateProposalStatusRequest.Status;
+
+        await proposalRepository.SaveChangesAsync(cancellationToken);
+    }
+
 
     public async Task<IEnumerable<Proposal>> FindAllAsync(CancellationToken cancellationToken)
     {
