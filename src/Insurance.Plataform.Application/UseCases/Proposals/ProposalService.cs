@@ -6,7 +6,7 @@ using Insurance.Plataform.Domain.Repositories;
 
 namespace Insurance.Plataform.Application.UseCases.Proposals;
 
-public class ProposalsService(IProposalRepository proposalRepository) : IProposalsService
+public class ProposalService(IProposalRepository proposalRepository) : IProposalService
 {
     public async Task<Guid> CreateAsync(
         CreateProposalRequest createProposalRequest,

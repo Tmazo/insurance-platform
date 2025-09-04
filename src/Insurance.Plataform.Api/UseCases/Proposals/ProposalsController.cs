@@ -6,7 +6,7 @@ namespace Insurance.Plataform.Api.UseCases.Proposals;
 
 [ApiController]
 [Route("[controller]")]
-public class ProposalsController(IProposalsService proposalsService) : ControllerBase
+public class ProposalsController(IProposalService proposalsService) : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> CreateAsync(

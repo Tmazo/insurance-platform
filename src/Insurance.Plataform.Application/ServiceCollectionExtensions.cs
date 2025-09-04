@@ -16,7 +16,7 @@ namespace Insurance.Plataform.Application
 
         private static IServiceCollection AddServices(this IServiceCollection services) =>
             services
-                .AddScoped<IProposalsService, ProposalsService>()
+                .AddScoped<IProposalService, ProposalService>()
                 .AddScoped<IContractingService, ContractingService>();
     }
 }

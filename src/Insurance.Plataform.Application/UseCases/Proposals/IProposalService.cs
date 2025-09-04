@@ -3,7 +3,7 @@ using Insurance.Plataform.Domain.Enums;
 
 namespace Insurance.Plataform.Application.UseCases.Proposals;
 
-public interface IProposalsService
+public interface IProposalService
 {
     Task<Guid> CreateAsync(
         CreateProposalRequest createProposalRequest,
