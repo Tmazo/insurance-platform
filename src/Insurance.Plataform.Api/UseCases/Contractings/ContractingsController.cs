@@ -1,4 +1,4 @@
-﻿using Insurance.Plataform.Application.UseCases.Contracting;
+﻿using Insurance.Plataform.Application.UseCases.Contractings;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Insurance.Plataform.Api.UseCases.Contractings;

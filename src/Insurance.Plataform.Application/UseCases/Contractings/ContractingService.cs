@@ -4,7 +4,7 @@ using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Enums;
 using Insurance.Plataform.Domain.Repositories;
 
-namespace Insurance.Plataform.Application.UseCases.Contracting
+namespace Insurance.Plataform.Application.UseCases.Contractings
 {
     public class ContractingService(
         IProposalsService proposalsService,

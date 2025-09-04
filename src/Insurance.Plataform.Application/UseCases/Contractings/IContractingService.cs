@@ -1,4 +1,4 @@
-﻿namespace Insurance.Plataform.Application.UseCases.Contracting
+﻿namespace Insurance.Plataform.Application.UseCases.Contractings
 {
     public interface IContractingService
     {

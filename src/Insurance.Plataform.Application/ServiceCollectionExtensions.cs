@@ -1,4 +1,4 @@
-﻿using Insurance.Plataform.Application.UseCases.Contracting;
+﻿using Insurance.Plataform.Application.UseCases.Contractings;
 using Insurance.Plataform.Application.UseCases.Proposals;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
