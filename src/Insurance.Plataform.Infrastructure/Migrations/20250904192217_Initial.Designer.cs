@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Insurance.Plataform.Infrastructure.Migrations
 {
     [DbContext(typeof(InsurancePlataformContext))]
-    [Migration("20250901184807_Initial")]
+    [Migration("20250904192217_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -33,10 +33,6 @@ namespace Insurance.Plataform.Infrastructure.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("ProposalId")
                         .HasColumnType("uniqueidentifier");
