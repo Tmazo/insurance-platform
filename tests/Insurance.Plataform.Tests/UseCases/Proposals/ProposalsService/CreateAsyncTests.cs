@@ -6,7 +6,7 @@ using NSubstitute;
 
 namespace Insurance.Plataform.Tests.UseCases.Proposals.ProposalsService;
 
-public class CreateTests() : TestBasedMock
+public class CreateAsyncTests : TestBasedMock
 {
     [Fact]
     public async Task Create_Should_Success_Return_Id()
