@@ -3,9 +3,9 @@ using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Enums;
 using NSubstitute;
 
-namespace Insurance.Plataform.Tests.UseCases.Proposals.ProposalsService;
+namespace Insurance.Plataform.Tests.UseCases.Proposals.ProposalsServiceTests;
 
-public class FindByStatusAsyncTests : TestBasedMock
+public class FindByStatusAsyncTests : ProposalsTestBasedMock
 {
     [Fact]
     public async Task FindByStatus_Should_Success_Return_ProposalEntities()
@@ -25,7 +25,7 @@ public class FindByStatusAsyncTests : TestBasedMock
             .Returns(returnProposals);
 
         //Act
-        var result = await proposalsService.FindByStatusAsync(EProposalStatus.Approved, CancellationToken.None);
+        var result = await proposalService.FindByStatusAsync(EProposalStatus.Approved, CancellationToken.None);
 
         //Assert
         result.Should().NotBeNull();

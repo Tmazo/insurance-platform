@@ -5,9 +5,9 @@ using Insurance.Plataform.Domain.Entities;
 using Insurance.Plataform.Domain.Enums;
 using NSubstitute;
 
-namespace Insurance.Plataform.Tests.UseCases.Proposals.ProposalsService;
+namespace Insurance.Plataform.Tests.UseCases.Proposals.ProposalsServiceTests;
 
-public class UpdateStatusAsyncTests : TestBasedMock
+public class UpdateStatusAsyncTests : ProposalsTestBasedMock
 {
     [Fact]
     public async Task UpdateStatus_Should_Success()
@@ -29,7 +29,7 @@ public class UpdateStatusAsyncTests : TestBasedMock
             });
 
         //Act
-        await proposalsService.UpdateStatusAsync(id, updateProposalStatusRequest, CancellationToken.None);
+        await proposalService.UpdateStatusAsync(id, updateProposalStatusRequest, CancellationToken.None);
     }
 
     [Fact]
@@ -41,7 +41,7 @@ public class UpdateStatusAsyncTests : TestBasedMock
 
         // Act
         Func<Task> act = async () => 
-        await proposalsService
+        await proposalService
         .UpdateStatusAsync(
             id,
             updateProposalStatusRequest,
